@@ -1,4 +1,4 @@
-# 🎬 MovieInfo — Movie Finder App
+# 🎬 Moview — Movie Finder App
 
 MovieInfo is a simple and responsive movie search application built using **React** and **Tailwind CSS**.  
 It allows users to find movies by their **name** and **release year** using an external **Movie API** (like OMDb or TMDB).  
