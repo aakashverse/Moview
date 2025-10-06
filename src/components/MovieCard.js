@@ -76,7 +76,7 @@ export default function MovieCard({movie}){
               <h2 className="text-xl font-medium text-yellow-900 mt-4">Awards: {movie?.Awards}</h2>
               <h2 className="text-xl font-medium text-purple-900 mt-4">BoxOffice: {movie?.BoxOffice}</h2>
             </div>     
-          </div>
+          </div> 
         </>
       );     
 }

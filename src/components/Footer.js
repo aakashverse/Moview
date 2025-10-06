@@ -10,7 +10,7 @@ export default function Footer(){
             <a href="/privacy-policy" className="hover:text-blue-600 mx-2">Privacy Policy</a>
             <a href="/terms" className="hover:text-blue-600 mx-2">Terms & Conditions</a>
           </div>
-          <p className="text-xs text-gray-600 mt-4">© 2025 Moview. All rights reserved.</p>
+          <p className="text-xs text-gray-600 mt-4">© 2025 Moview by AΛKΛ5H . All rights reserved.</p>
         </div>
       </footer>
     );

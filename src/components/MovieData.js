@@ -15,7 +15,7 @@ export default function MovieData({title,year}){
                 setmovieData(data);
             else
                 setmovieData(null);
-        }
+        } 
 
         getMovieData();
         
@@ -25,13 +25,10 @@ export default function MovieData({title,year}){
         
         <>
         {
-            
             <MovieCard key={movieData?.Title} movie={movieData}/>
-            
         }
     
         </>
-
     )
 }
 
