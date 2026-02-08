@@ -1,14 +1,14 @@
 const baseURL = "https://www.omdbapi.com";
 const API_KEY = process.env.OMDB_API_KEY;
 
-export async function searchMovies(query = "horror") {
+export async function searchMovies(query = 'comedy', year) {
   try {
-    const res = await fetch(
-      `${baseURL}/?apikey=${API_KEY}&s=${query}`
-    );
+    const url = year ? `${baseURL}/?apikey=${API_KEY}&s=${query}&y=${year}` 
+                     : `${baseURL}/?apikey=${API_KEY}&s=${query}`
 
+    const res = await fetch(url);
     const data = await res.json();
-    // console.log('search movie data :', data);
+    console.log('search movie data :', data);
     
     return data.Search ?? [];
 } catch (error) {

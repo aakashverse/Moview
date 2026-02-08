@@ -1,13 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function MovieCard({ movie }) {
+
     if(!movie){
-        if (!movie) {
-      console.log("Rendering No Movie Found...");
+      console.log("No Movie Found...");
     
       return (
         <div className="flex flex-col justify-center items-center mt-20 p-6 bg-white rounded-xl shadow-xl text-center relative">
-          <img
+          <Image
             className="h-96 w-full object-cover rounded-xl shadow-lg opacity-60"
             src="https://assets.nflxext.com/ffe/siteui/vlv3/98df3030-1c2b-4bd1-a2f5-13c611857edb/web_tall_panel/IN-en-20250331-TRIFECTA-perspective_ed11f76a-3e10-41ea-a60d-9008d2b6c103_large.jpg"
             alt="movie-placeholder"
@@ -26,18 +27,18 @@ export default function MovieCard({ movie }) {
         </div>
       );
     }
-}
-
 
 
   return (
     <Link href={`/movie/${movie.imdbID}`}>
-      <div className="group cursor-pointer overflow-hidden rounded-lg shadow-lg bg-white hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+      <div className="group cursor-pointer overflow-hidden rounded-lg shadow-lg bg-slate-100 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
         <div className="relative w-full h-80">
-          <img
+          <Image
             src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.jpg"}
-            alt={movie.Title}
-            className="w-full h-full object-cover"
+            alt={`${movie.Title} poster`}
+            fill
+            className="object-cover rounded-t-lg"
+            sizes="(max-width: 768px) 50vw, 25vw"
           />
         </div>
 

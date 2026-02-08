@@ -1,70 +1,74 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function Header({ setTitle, setYear }) {
-  const [title, setTitleInput] = useState("");
-  const [year, setYearInput] = useState("");
+export default function Header() {
+  const router = useRouter();
 
-  const handleClick = () => {
-    setTitle(title);
-    setYear(year);
+  const [title, setTitle] = useState("");
+  const [movieYear, setMovieYear] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!title.trim()) return;
+
+    router.push(
+      `/?s=${encodeURIComponent(title)}&y=${movieYear}`
+    );
   };
 
   return (
     <header className="bg-gray-900 text-white shadow-lg">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 p-6">
-        
+
         {/* Logo */}
-        <div className="flex items-center gap-3 cursor-pointer">
+        <div
+          onClick={() => router.push("/")}
+          className="flex items-center gap-3 cursor-pointer"
+        >
           <img
             src="https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-film-black-film-illustration-image_1461389.jpg"
             alt="logo"
-            className="h-12 w-12 object-cover rounded-md transform transition-transform duration-300 hover:scale-110"
+            className="h-12 w-12 object-cover rounded-md hover:scale-110 transition"
           />
-          <span className="text-2xl lg:text-3xl font-bold tracking-tight hover:text-yellow-400 transition-colors">
+          <span className="text-2xl lg:text-3xl font-bold hover:text-yellow-400">
             Moview
           </span>
         </div>
 
-        {/* Search Bar */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-          <div className="relative w-full sm:w-64">
-            <input
-              type="text"
-              placeholder="Search movie..."
-              value={title}
-              onChange={(e) => setTitleInput(e.target.value)}
-              className="w-full h-12 pl-10 pr-4 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow"
-            />
-            <img
-              src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-search-strong-512.png"
-              alt="search"
-              className="absolute left-3 top-1/2 w-5 h-5 -translate-y-1/2 opacity-60"
-            />
-          </div>
+        {/* Search Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
+        >
+          <input
+            type="text"
+            placeholder="Search movie..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full sm:w-64 h-12 px-4 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400"
+          />
 
           <input
             type="number"
             placeholder="YYYY"
-            value={year}
-            onChange={(e) => setYearInput(e.target.value)}
-            className="w-full sm:w-24 h-12 px-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow"
+            value={movieYear}
+            onChange={(e) => setMovieYear(e.target.value)}
+            className="w-full sm:w-24 h-12 px-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400"
           />
 
           <button
-            onClick={handleClick}
-            className="h-12 px-5 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 hover:scale-105 transition-transform duration-200"
+            type="submit"
+            className="h-12 px-5 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"
           >
             Search
           </button>
-        </div>
+        </form>
 
         {/* Navigation */}
-        <nav className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8 mt-4 lg:mt-0">
-          <p className="cursor-pointer hover:text-yellow-400 hover:underline transition-colors">Explore</p>
-          <p className="cursor-pointer hover:text-yellow-400 hover:underline transition-colors">Contact Us</p>
-          <p className="cursor-pointer px-4 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition-colors">
-            Help?
-          </p>
+        <nav className="flex gap-6">
+          <p className="cursor-pointer hover:text-yellow-400">Explore</p>
+          <p className="cursor-pointer hover:text-yellow-400">Contact Us</p>
         </nav>
       </div>
     </header>
