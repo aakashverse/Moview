@@ -27,7 +27,7 @@ export default function Header() {
           className="flex items-center gap-3 cursor-pointer"
         >
           <img
-            src="https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-film-black-film-illustration-image_1461389.jpg"
+            src="https://t4.ftcdn.net/jpg/16/75/04/51/240_F_1675045191_Dr2apgnHGFeNRIZUuaIMFIhZicAuAL3W.jpg"
             alt="logo"
             className="h-12 w-12 object-cover rounded-md hover:scale-110 transition"
           />

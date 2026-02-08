@@ -1,4 +1,5 @@
 import { searchMovies } from "../lib/omdb";
+import SEO from "@/components/SEO";
 import MovieCard from "../components/MovieCard";
 
 export async function getServerSideProps(context) {
@@ -35,6 +36,12 @@ export async function getServerSideProps(context) {
 export default function Home({ movies, query, year }) {
   return (
     <>
+    <SEO
+      title="Moview – Search Movies Online"
+      description="Find movies by title and year. Discover ratings, posters, and full details instantly."
+      url="https://yourdomain.vercel.app"
+    />
+    
     <h1 className="text-xl font-bold p-6">
         {query ? `Search Results for "${query}"` : "Popular Movies"}
     </h1>
