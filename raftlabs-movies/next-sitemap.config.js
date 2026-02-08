@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: "https://yourdomain.com",
+  siteUrl: "https://moview-kohl.vercel.app",
   generateRobotsTxt: true,
 };
