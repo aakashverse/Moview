@@ -25,44 +25,59 @@ export default function MoviePage({ movie }) {
         />
       </Head>
 
-      <div className="max-w-5xl mx-auto p-6">
-        <div className="flex flex-col md:flex-row gap-8 bg-gray-900 text-white rounded-xl shadow-lg overflow-hidden">
-          
-          {/* Movie Poster */}
-          <Image
-            src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.jpg"}
-            alt={movie.Title} 
-            // className="w-full md:w-1/3 object-cover"
-            width={300}
-            height={350}
-          />
+      <div className="max-w-6xl mx-auto p-4 sm:p-6">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 bg-gray-900 text-white rounded-xl shadow-lg overflow-hidden">
 
-          {/* Movie Details */}
-          <div className="flex-1 p-6 flex flex-col justify-between">
+          {/* Poster */}
+          <div className="relative w-full md:w-1/3 aspect-[2/3]">
+            <Image
+              src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.jpg"}
+              alt={`${movie.Title} poster`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </div>
+
+          {/* Details */}
+          <div className="flex-1 p-4 sm:p-6 flex flex-col justify-between">
+
             <div>
-              <h1 className="text-4xl font-bold mb-2">{movie.Title}</h1>
-              <p className="text-gray-400 mb-4">{movie.Year} • {movie.Genre} • {movie.Language}</p>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                {movie.Title}
+              </h1>
 
-              <p className="text-gray-200 mb-4">{movie.Plot}</p>
+              <p className="text-gray-400 text-sm sm:text-base mb-4">
+                {movie.Year} • {movie.Genre} • {movie.Language}
+              </p>
 
-              <div className="flex items-center gap-4">
-                <p className="bg-white text-gray-900 px-3 py-1 rounded font-semibold flex items-center gap-1">
-                  IMDB Rating -  {movie.imdbRating} ⭐
-                </p>
-                <p className="text-gray-400">{movie.Runtime}</p>
-                <p className="text-gray-400">{movie.Rated}</p>
-                <p className="text-gray-400">{movie.Awards}</p>
+              <p className="text-gray-200 text-sm sm:text-base leading-relaxed mb-4">
+                {movie.Plot}
+              </p>
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-3 text-sm sm:text-base">
+                <span className="bg-white text-gray-900 px-3 py-1 rounded font-semibold">
+                  ⭐ {movie.imdbRating}
+                </span>
+                <span className="text-gray-400">{movie.Runtime}</span>
+                <span className="text-gray-400">{movie.Rated}</span>
+                <span className="text-gray-400 break-words">
+                  {movie.Awards}
+                </span>
               </div>
             </div>
 
-            <div className="mt-6 flex gap-4">
-              <p className="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition">
+            {/* Credits */}
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 text-sm sm:text-base">
+              <p className="bg-gray-800 px-4 py-2 rounded break-words">
                 Director: {movie.Director}
               </p>
-              <p className="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition">
+              <p className="bg-gray-800 px-4 py-2 rounded break-words">
                 Actors: {movie.Actors}
               </p>
             </div>
+
           </div>
         </div>
       </div>
