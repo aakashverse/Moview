@@ -25,20 +25,25 @@ export async function getServerSideProps(context) {
   return {
     props: {
       movies,
-      query: s || "",
-      year: y || "",
+      query: s ?? "",
+      year: y ?? "",
     },
   };
 }
 
 
-
-export default function Home({ movies }) {
+export default function Home({ movies, query, year }) {
   return (
+    <>
+    <h1 className="text-xl font-bold p-6">
+        {query ? `Search Results for "${query}"` : "Popular Movies"}
+    </h1>
+    
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
       {movies.map((movie) => (
         <MovieCard key={movie.imdbID} movie={movie} />
       ))}
     </div>
+    </>
   );
 }
